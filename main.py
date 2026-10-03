@@ -4,7 +4,7 @@ class Cat:
         self.age = age
 
     def meow(self):
-        print(self.name, "Мурчить)
+        print(self.name, "Мурчить")
 
     def eat(self):
         print(self.name, "Їсть.")
@@ -13,7 +13,7 @@ class Cat:
         print(self.name, "Спить.")
 
 
-cat = Cat("Мілка", 2)
+cat = Cat("Мілка", 1)
 
 print("Ім'я:", cat.name)
 print("Вік:", cat.age)
