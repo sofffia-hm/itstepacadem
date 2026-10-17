@@ -1,16 +1,50 @@
-from bs4 import BeautifulSoup
+#import urllib.request
+#opener = urllib.request.build_opener()
+#response = opener.open("http://httpbin.org/get")
+#print(response.read())
+
+#import requests
+#response = requests.get("https://httpbin.org/get")
+#print(response.text)
+#print(type(response.text))
+
+#import requests
+#response = requests.post(
+   # "https://httpbin.org/post",
+  #  data="Test data",
+ #   headers ={"h1": "Test title"}
+#)
+#print(response.status_code)
+#print(response.text)
+
+#import requests
+#url="http://quotes.toscrape.com/"
+#response = requests.get(url)
+#print(response.status_code)
+#print(response.text)
+
+#import requests
+#from bs4 import BeautifulSoup
+#url="http://quotes.toscrape.com/"
+#response = requests.get(url)
+#if response.status_code == 200:
+    #soup = BeautifulSoup(response.text, "html.parser")
+   # quotes = soup.find_all("span",{"class":"text"})
+  #  for quote in quotes:
+ #       print(quote.text)
+#else:
+   # print("Сторінку невдалося завантажити")
+
+
+
 import requests
-url = "https://books.toscrape.com/"
+from bs4 import BeautifulSoup
+url="http://quotes.toscrape.com/"
 response = requests.get(url)
 if response.status_code == 200:
     soup = BeautifulSoup(response.text, "html.parser")
-    title = soup.find("div", {"class": "col-sm-8 h1"}).text
-    print("Заголовок:", title)
-    books = soup.find_all("article", {"class": "product_pod"})[:5]
-    print("Перші 5 книг:")
-    for book in books:
-        title = book.find("h3").text
-        price = book.find("p", {"class": "price_color"}).text
-        print("Назва:",  title,", " "Ціна:", price)
+    authors = soup.find_all("small",{"class":"author"})
+    for author in authors:
+        print(author.text)
 else:
-    print("Сторінку не вдалося завантажити")
+    print("Сторінку невдалося завантажити")
